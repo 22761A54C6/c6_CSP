@@ -7,19 +7,19 @@
     <style>
         body {
             display: flex;
-            justify-content: center; /* Horizontally center */
-            align-items: center; /* Vertically center */
-            height: 100vh; /* Full viewport height */
-            margin: 0; /* Remove default margin */
-            background: url('https://i.pinimg.com/564x/6e/f6/ab/6ef6ab6176dbaf109a47414e6ed47a9b.jpg') no-repeat center center fixed; /* Background image */
-            background-size: cover; /* Cover the entire page */
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: url('https://i.pinimg.com/564x/6e/f6/ab/6ef6ab6176dbaf109a47414e6ed47a9b.jpg') no-repeat center center fixed;
+            background-size: cover;
         }
         .highlighted-area {
-            border: 2px solid #5bc0de; /* Border color */
-            padding: 20px; /* Space between the border and content */
-            border-radius: 10px; /* Rounded corners */
-            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+            border: 2px solid #5bc0de;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         input[type="text"] {
             width: 300px;
@@ -30,12 +30,11 @@
             margin-left: 10px;
             cursor: pointer;
         }
-        /* Styling for the autocomplete suggestions */
         .autocomplete-suggestions {
             border: 1px solid #ddd;
             max-height: 150px;
             overflow-y: auto;
-            position: absolute; /* Use absolute positioning */
+            position: absolute;
             z-index: 9999;
             background-color: white;
             width: 300px;
@@ -53,60 +52,57 @@
 <body>
 <center>
 <h2>Search for Diseases</h2>
-
-<!-- Highlighted Square Area -->
 <div class="highlighted-area">
-    <!-- Search Box with Button -->
-    <form action="list.html" method="GET">
+    <form action="list.html" method="GET" onsubmit="return validateForm()">
         <div style="position: relative;">
-            <input type="text" id="searchBox" name="query" placeholder="Search for diseases..." autocomplete="off" oninput="showSuggestions()"><br></br>
-           
-            <!-- Suggestions container -->
-            <div id="suggestions" class="autocomplete-suggestions"></div><br></br>
+            <input type="text" id="searchBox" name="query" placeholder="Search for diseases..." autocomplete="off" oninput="showSuggestions()"><br><br>
+            <div id="suggestions" class="autocomplete-suggestions"></div><br>
         </div>
         <button type="submit">Search</button>
     </form>
 </div>
-
 <script>
-    // List of diseases for autocomplete suggestions
     const diseases = [
-        "Malaria", "Diabetes", "Hypertension", "Dengue Fever", "Asthma", "COVID-19", 
-        "Flu (Influenza)", "Gastroenteritis", "Chickenpox", "Typhoid Fever", 
-        "Tuberculosis", "Cholera", "HIV/AIDS", "Ebola", "Zika Virus", "Hepatitis B", 
-        "Leprosy", "Pneumonia", "Measles", "Mumps","Headache","Body Pains","Cold","Cough"
+        "Malaria", "Diabetes", "Hypertension", "Dengue Fever", "Asthma", "COVID-19",
+        "Flu (Influenza)", "Gastroenteritis", "Chickenpox", "Typhoid Fever",
+        "Tuberculosis", "Cholera", "HIV/AIDS", "Ebola", "Zika Virus", "Hepatitis B",
+        "Leprosy", "Pneumonia", "Measles", "Mumps", "Headache", "Body Pains", "Cold", "Cough"
     ];
 
-    // Function to show autocomplete suggestions
     function showSuggestions() {
         const input = document.getElementById('searchBox');
         const filter = input.value.toLowerCase();
         const suggestionsContainer = document.getElementById('suggestions');
-        
-        // Clear previous suggestions
+
         suggestionsContainer.innerHTML = '';
 
         if (filter) {
-            // Filter diseases based on user input
-            const filteredDiseases = diseases.filter(disease => 
+            const filteredDiseases = diseases.filter(disease =>
                 disease.toLowerCase().includes(filter)
             );
 
-            // Display suggestions in the container
             filteredDiseases.forEach(disease => {
                 const suggestionItem = document.createElement('div');
                 suggestionItem.classList.add('autocomplete-suggestion');
                 suggestionItem.textContent = disease;
 
-                // When suggestion is clicked, fill input with disease name
                 suggestionItem.onclick = () => {
                     input.value = disease;
-                    suggestionsContainer.innerHTML = ''; // Clear suggestions
+                    suggestionsContainer.innerHTML = '';
                 };
 
                 suggestionsContainer.appendChild(suggestionItem);
             });
         }
+    }
+
+    function validateForm() {
+        const input = document.getElementById('searchBox').value;
+        if (!input.trim()) {
+            alert("Please enter a disease name");
+            return false; // Prevent form submission
+        }
+        return true; // Allow form submission
     }
 </script>
 </center>
