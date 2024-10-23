@@ -9,56 +9,96 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            height: 100vh; /* Full viewport height */
-            background-image: url('https://static.vecteezy.com/system/resources/previews/020/804/109/non_2x/communication-and-technology-concept-hand-putting-wooden-block-cube-symbol-telephone-email-address-website-page-contact-us-or-e-mail-marketing-contact-us-in-customer-support-concept-photo.jpg'); /* Background image */
-            background-size: cover; /* Ensure the image covers the entire background */
-            background-position: center; /* Center the image */
-            background-repeat: no-repeat; /* Prevent image repetition */
+            height: 100vh;
+            background-image: url('https://i.pinimg.com/564x/9e/b8/5e/9eb85e928e4fda9b77ba7260897bf148.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            flex-direction: column;
         }
-
-        h2 {
-            color: #333;
-            text-align: center; /* Ensure the heading is centered */
-            margin-top: 20px;
+        nav {
+            background-color: #5bc0de;
+            overflow: hidden;
+            transition: background-color 0.5s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            height: 50px;
         }
-
+        #webpage-name {
+            font-size: 1.5em;
+            color: white;
+            font-weight: bold;
+        }
+        nav ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            margin-left: auto;
+        }
+        nav li {
+            margin: 0 10px;
+        }
+        nav a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            line-height: 60px;
+        }
+        nav a:hover {
+            background-color: #eee;
+            color: #d9534f;
+        }
+        .footer-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
         footer {
             color: #333;
             padding: 20px;
             text-align: center;
-            border: 2px solid rgba(0, 0, 0, 0.605); /* Light border for rectangle */
-            border-radius: 10px; /* Rounded corners */
-            background-color: rgba(91, 109, 109, 0.8); /* Semi-transparent background */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
-            width: 40%; /* Set width for footer box */
-            margin: 20px auto; /* Center horizontally and add margin to the top */
-            position: relative;
-            top: 10%; /* Push the footer towards the top */
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 25%;
         }
-
         footer p {
             margin: 10px 0;
         }
-
         footer a {
-            color: #0ae0e4;
+            color: #287677;
             text-decoration: none;
         }
-
         footer a:hover {
             text-decoration: underline;
         }
     </style>
 </head>
 <body>
-
-    <h2>Contact for Any Problems</h2>
-
-    <footer>
-        <p>Author: <a href="mailto:ksvngdeepika@gmail.com">ksvngdeepika@gmail.com</a></p>
-        <p>Author: <a href="mailto:tumati.bhanuprakash947@gmail.com">tumati.bhanuprakash947@gmail.com</a></p>
-        <p>General Support: <a href="mailto:hege@example.com">hege@example.com</a></p>
-    </footer>
-
+    <nav>
+        <span id="webpage-name">Cure Finder</span>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
+    <div class="footer-container">
+        <footer>
+            <h2>Contact us</h2>
+            <p>Author: <a href="mailto:ksvngdeepika@gmail.com">ksvngdeepika@gmail.com</a></p>
+            <p>Author: <a href="mailto:tumati.bhanuprakash947@gmail.com">tumati.bhanuprakash947@gmail.com</a></p>
+            <p>General Support: <a href="mailto:hege@example.com">hege@example.com</a></p>
+        </footer>
+    </div>
 </body>
 </html>
